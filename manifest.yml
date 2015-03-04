@@ -1,0 +1,5 @@
+applications:
+- name: treehacks
+  path: .
+  memory: 256M
+  command: python server.py

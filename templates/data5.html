@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Treehacks</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="static/stylesheets/style.css" />
+
+</head>
+<body>
+<!-- http://bl.ocks.org/mbostock/4600693 -->
+<style type="text/css">
+    .node {
+    stroke: #fff;
+    stroke-width: 1.5px;
+}
+
+.link {
+    fill: none;
+    stroke: #bbb;
+}
+
+h1 {
+    margin-left: 20px;
+}
+
+form {
+  list-style: none;
+  padding: 0;
+  width: 300px; 
+  height: 40px; 
+
+  margin: 7px 20px 20px 20px;
+  position: relative; 
+  z-index: 0;
+    -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+}
+
+</style>
+<h1>Bloomberg Industry Cluster Intelligence</h1>
+<h1>Data 5</h1>
+<style type="text/css"></style></head><body>
+<script src="http://code.jquery.com/jquery-latest.min.js"
+        type="text/javascript"></script>
+<script src="static/d3.v3.min.js"></script>
+<script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+<script type='text/javascript' src='//www.bing.com/widget/bootstrap.js' data-visualization='images' data-carouselstate='expanded' data-strength='conservative' data-version='1.0b' data-autosnapshot='true' data-id='829a001add0c423c851b167315a8bd8f' data-options='cse=0' async></script>
+
+<div id="search" style="position:absolute; padding: 30px;right:0px;top: 0px; width:50%; height:20%; background-color:white; margin-left:auto;margin-right:auto;">
+    
+<ul class="navigation">
+      <a id="filter" class="main" href="#">Findings</a>
+      <li id="wholeset"><a onclick="en(); return false;" href="#">Entry Point</a></li>
+        <li id="relations"><a onclick="co();return false;" href="#">Correlation vs Inverse Relations</a></li>
+        <li id="deviations"><a onclick="de();return false;" href="#">Deviations from Market</a></li>
+        <li id="semantics"><a onclick="se();return false;" href="#">Semantic Analytics</a></li>
+    </ul>
+
+ <form id="searchform" method="get">
+      <input style="width: 250px;height: 35px; font:bold 15px/40px arial, sans-serif;padding 0px; margin-left:300px;background: Transparent" placeholder="Type filter here..." type="text" name="keyword">
+      <input style="height:33px; display:none; font: bold 15px/40px arial, sans-serif; color:white; background-color: Transparent;border:none;" type="submit" value="Go">
+    </form>
+<div class="ui-widget">
+   <input id="searchu">
+    <button type="button" onclick="searchNode()">Search</button>
+</div>
+</div>
+
+<script type="text/javascript">
+
+function searchNode() {
+    //find the node
+    var selectedVal = document.getElementById('searchu').value;
+    // console.log(selectedVal)
+    var node = svg.selectAll(".node");
+    // console.log(node)
+    if (!selectedVal) {
+        node.style("stroke", "white").style("stroke-width", "1");
+    } else {
+
+        var selected = node.filter(function (d, i) {
+            // console.log(d.name.name)
+            return d.name.name != selectedVal;
+            
+        });
+        selected.style("opacity", "0");
+        var link = svg.selectAll(".link")
+        link.style("opacity", "0");
+        d3.selectAll(".node, .link").transition()
+            .duration(5000)
+            .style("opacity", 1);
+    }
+}
+ 
+// 
+
+
+
+// 
+
+
+
+        $("#filter").text("Entry Point");
+        
+        d3.json( '/static/sticker/clustering/data5.json', function(error, graph) {
+    var nodes = graph.nodes.slice(),
+            links = [],
+            bilinks = [];
+
+    graph.links.forEach(function(link) {
+        var s = nodes[link.source],
+                t = nodes[link.target],
+                i = {}; // intermediate node
+        nodes.push(i);
+        links.push({source: s, target: i}, {source: i, target: t});
+        bilinks.push([s, i, t]);
+    });
+
+    force
+            .nodes(nodes)
+            .links(links)
+            .start();
+
+    var link = svg.selectAll(".link")
+            .data(bilinks)
+        .enter().append("path")
+            .attr("class", "link");
+
+    var node = svg.selectAll(".node")
+            .data(graph.nodes)
+        .enter().append("circle")
+            .attr("class", "node")
+            .attr("r", 5)
+            .style("fill", function(d) { return color(d.group); })
+            .call(force.drag)
+            .on('dblclick', connectedNodes)
+            .on('click',getcontent);
+
+    node.append("title")
+            .text(function(d) { return d.name; });
+
+    force.on("tick", function() {
+        link.attr("d", function(d) {
+            // console.log("M" + d[0].x + "," + d[0].y
+            //      + "S" + d[1].x + "," + d[1].y
+            //      + " " + d[2].x + "," + d[2].y);
+
+            return "M" + d[0].x + "," + d[0].y
+                    + "S" + d[1].x + "," + d[1].y
+                    + " " + d[2].x + "," + d[2].y;
+        });
+        node.attr("transform", function(d) {
+            // console.log("translate(" + d.x + "," + d.y + ")");
+            return "translate(" + d.x + "," + d.y + ")";
+        });
+    });
+
+        // http://www.coppelia.io/2014/07/an-a-to-z-of-extra-features-for-the-d3-force-layout/
+
+
+
+
+    //Create an array logging what is connected to what
+    var linkedByIndex = {};
+    for (i = 0; i < graph.nodes.length; i++) {
+            linkedByIndex[i + "," + i] = 1;
+    };
+    graph.links.forEach(function (d) {
+
+
+            linkedByIndex[d.source + "," + d.target] = 1;
+
+    });
+        // console.log(linkedByIndex);
+    //This function looks up whether a pair are neighbours  
+    function neighboring(a, b) {
+
+            return linkedByIndex[a.index + "," + b.index];
+    }
+
+    function connectedNodes() {
+
+            if (toggle == 0) {
+
+                // console.log('toggle:' +toggle);
+                    //Reduce the opacity of all but the neighbouring nodes
+                    toggle = 1;
+                    d = d3.select(this).node().__data__;
+                    node.style("opacity", function (o) {
+
+                            return neighboring(d, o) | neighboring(o, d) ? 1 : 0.1;
+                    });
+                    
+                    link.style("opacity", function (o) {
+                            return d.index==o.source.index | d.index==o.target.index ? 1 : 0.1;
+                    });
+                    
+                    //Reduce the op
+                    
+                    
+            } else {
+                // console.log('toggle:' +toggle);
+                    //Put them back to opacity=1
+                    node.style("opacity", 1);
+                    link.style("opacity", 1);
+                    toggle = 0;
+            }
+
+    }
+var optArray = [];
+for (var i = 0; i < graph.nodes.length - 1; i++) {
+     if (jQuery.inArray( graph.nodes[i].name.name, optArray )){
+    optArray.push(graph.nodes[i].name.name);}
+}
+optArray = optArray.sort();
+$(function () {
+    console.log(optArray);
+    $("#searchu").autocomplete({
+        source: optArray
+    });
+});
+
+
+    
+
+});
+
+    
+     
+
+
+$("#searchform").submit(function() {
+
+        if(!this.val() || this.val("")){
+            console.log("asf".this.val());
+        }
+
+    var url = "http://treehacks.mybluemix.net/"; // the script where you handle the form input.
+
+    $.ajax({
+           type: "GET",
+           url: url,
+           data: $("#searchform").serialize(), // serializes the form's elements.
+           success: function(data)
+           {
+               console.log($("#searchform").serialize()); // show response from the php script.
+           }
+         });
+
+    return false; // avoid to execute the actual submit of the form.
+});
+
+</script>
+
+
+
+
+<div id="panel" style="position:absolute; padding: 30px;right:0px;bottom: 0px; width:50%; height:70%; background-color:grey;">
+    <div class="profile">
+        Name: <span id="name"></span><br><br>
+    </div>    
+    <div class="profile">
+        Description: <span id="description"></span> <br><br>    
+    </div>
+    <div class="profile">
+        Industry: <span id="industry"></span><br><br>    
+    </div>
+
+    <div class="profile">
+        Sector: <span id="sector"></span><br><br>
+    </div>
+
+</div>
+
+<script type="text/javascript">
+
+function getcontent(){
+    $('.profile').show();
+
+    var content = d3.select(this).node().__data__;
+    $('#name').text(content['name']['name']);
+    $('#description').text(content['name']['description']);
+    $('#industry').text(content['name']['industry']);
+    $('#sector').text(content['name']['Sector']);
+}
+
+</script>
+
+<script>
+
+var toggle = 1;
+
+var width = 700,
+        height = 750;
+
+var color = d3.scale.category20();
+
+var force = d3.layout.force()
+        .linkDistance(10)
+        .linkStrength(2)
+        .size([width, height]);
+
+var svg = d3.select("body").append("svg")
+        .attr("width", width)
+        .attr("height", height);
+
+
+
+
+
+
+</script>
+
+
+<style type="text/css">
+.ui-menu-item{
+    color: black;
+    list-style: none;
+}
+
+.profile{
+    display: none;
+}
+h2 { text-align: center; color: #CCC; }
+a {
+  display: block;
+  text-decoration: none;
+  width: 100%;
+  height: 100%;
+  color: #999;
+}
+
+a:hover { color: #777; }
+
+/* NAVIGATION */
+.navigation {
+  list-style: none;
+  padding: 0;
+  width: 250px; 
+  height: 40px; 
+  margin: -23px 20px 20px 20px;
+  background: #95C11F;
+  position: relative; 
+  z-index: 100;
+}
+
+
+
+.navigation, .navigation a.main {
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+}
+
+.navigation:hover, .navigation:hover a.main {
+  border-radius: 4px 4px 0 0;
+  -webkit-border-radius: 4px 4px 0 0;
+  -moz-border-radius: 4px 4px 0 0;
+}
+
+.navigation a.main {
+  display: block; 
+  height: 40px;
+  font: bold 15px/40px arial, sans-serif; 
+  text-align: center; 
+  text-decoration: none; 
+  color: #FFF;  
+  -webkit-transition: 0.2s ease-in-out;
+  -o-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
+  position: relative;
+  z-index: 100;
+}
+
+.navigation:hover a.main {
+  color: rgba(255,255,255,0.6);
+  background: rgba(0,0,0,0.04);
+}
+
+.navigation li { 
+  width: 250px; 
+  height: 40px;
+  background: #F7F7F7;
+  font: normal 12px/40px arial, sans-serif !important; 
+  color: #999;
+  text-align: center;
+  margin: 0;
+  -webkit-transform-origin: 50% 0%;
+  -o-transform-origin: 50% 0%;
+  transform-origin: 50% 0%;
+  -webkit-transform: perspective(350px) rotateX(-90deg);
+  -o-transform: perspective(350px) rotateX(-90deg);
+  transform: perspective(350px) rotateX(-90deg);
+  box-shadow: 0px 2px 10px rgba(0,0,0,0.05);
+  -webkit-box-shadow: 0px 2px 10px rgba(0,0,0,0.05);
+  -moz-box-shadow: 0px 2px 10px rgba(0,0,0,0.05);
+}
+
+.navigation li:nth-child(even) { background: #F5F5F5; }
+.navigation li:nth-child(odd) { background: #EFEFEF; }
+
+.navigation li.n1 { 
+  -webkit-transition: 0.2s linear 0.8s;
+  -o-transition: 0.2s linear 0.8s;
+  transition: 0.2s linear 0.8s;
+}
+.navigation li.n2 {
+  -webkit-transition: 0.2s linear 0.6s;
+  -o-transition: 0.2s linear 0.6s;
+  transition: 0.2s linear 0.6s;
+}
+.navigation li.n3 {
+  -webkit-transition: 0.2s linear 0.4s;
+  -o-transition: 0.2s linear 0.4s;
+  transition: 0.2s linear 0.4s;
+}
+.navigation li.n4 { 
+  -webkit-transition:0.2s linear 0.2s;
+  -o-transition:0.2s linear 0.2s;
+  transition:0.2s linear 0.2s;
+}
+.navigation li.n5 {
+  border-radius: 0px 0px 4px 4px;
+  -webkit-transition: 0.2s linear 0s;
+  -o-transition: 0.2s linear 0s;
+  transition: 0.2s linear 0s;
+}
+
+.navigation:hover li {
+  -webkit-transform: perspective(350px) rotateX(0deg);
+  -o-transform: perspective(350px) rotateX(0deg);
+  transform: perspective(350px) rotateX(0deg);
+  -webkit-transition:0.2s linear 0s;
+  -o-transition:0.2s linear 0s;
+  transition:0.2s linear 0s;
+}
+.navigation:hover .n2 {
+  -webkit-transition-delay: 0.2s;
+  -o-transition-delay: 0.2s;
+  transition-delay: 0.2s;
+}
+.navigation:hover .n3 {
+  -webkit-transition-delay: 0.4s;
+  -o-transition-delay: 0.4s;
+  transition-delay: 0.4s;
+}
+.navigation:hover .n4 {
+  transition-delay: 0.6s;
+  -o-transition-delay: 0.6s;
+  transition-delay: 0.6s;
+}
+.navigation:hover .n5 {
+  -webkit-transition-delay: 0.8s;
+  -o-transition-delay: 0.8s;
+  transition-delay: 0.8s;
+}
+
+li{
+    z-index: 1000;
+}
+
+
+</style>
+</body>
+</html>

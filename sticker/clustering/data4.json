@@ -1,0 +1,299 @@
+{ "links" : [ { "source" : 1,
+        "target" : 0,
+        "value" : 24.0
+      },
+      { "source" : 3,
+        "target" : 0,
+        "value" : 24.0
+      },
+      { "source" : 3,
+        "target" : 1,
+        "value" : 24.0
+      },
+      { "source" : 5,
+        "target" : 0,
+        "value" : 32.0
+      },
+      { "source" : 5,
+        "target" : 1,
+        "value" : 32.0
+      },
+      { "source" : 5,
+        "target" : 3,
+        "value" : 32.0
+      },
+      { "source" : 5,
+        "target" : 4,
+        "value" : 33.0
+      },
+      { "source" : 8,
+        "target" : 0,
+        "value" : 17.0
+      },
+      { "source" : 8,
+        "target" : 1,
+        "value" : 17.0
+      },
+      { "source" : 8,
+        "target" : 3,
+        "value" : 17.0
+      },
+      { "source" : 8,
+        "target" : 6,
+        "value" : 28.0
+      },
+      { "source" : 8,
+        "target" : 7,
+        "value" : 26.0
+      },
+      { "source" : 12,
+        "target" : 5,
+        "value" : 16.0
+      },
+      { "source" : 12,
+        "target" : 6,
+        "value" : 16.0
+      },
+      { "source" : 12,
+        "target" : 9,
+        "value" : 19.0
+      },
+      { "source" : 17,
+        "target" : 8,
+        "value" : 16.0
+      },
+      { "source" : 17,
+        "target" : 9,
+        "value" : 16.0
+      },
+      { "source" : 18,
+        "target" : 0,
+        "value" : 16.0
+      },
+      { "source" : 18,
+        "target" : 1,
+        "value" : 16.0
+      },
+      { "source" : 18,
+        "target" : 3,
+        "value" : 16.0
+      },
+      { "source" : 18,
+        "target" : 5,
+        "value" : 17.0
+      },
+      { "source" : 18,
+        "target" : 6,
+        "value" : 31.0
+      },
+      { "source" : 18,
+        "target" : 7,
+        "value" : 18.0
+      },
+      { "source" : 18,
+        "target" : 8,
+        "value" : 24.0
+      },
+      { "source" : 18,
+        "target" : 9,
+        "value" : 22.0
+      },
+      { "source" : 18,
+        "target" : 12,
+        "value" : 17.0
+      },
+      { "source" : 18,
+        "target" : 14,
+        "value" : 25.0
+      },
+      { "source" : 18,
+        "target" : 16,
+        "value" : 31.0
+      },
+      { "source" : 18,
+        "target" : 17,
+        "value" : 18.0
+      }
+    ],
+  "nodes" : [ { "group" : 2,
+        "name" : { "$_last_5_day" : 0,
+            "Sector" : "Finance",
+            "description" : "1347 Capital Corp. blank check company formed purpose entering merger, share exchange, asset acquisition, stock purchase, recapitalization, reorganization similar business combination businesses entities.",
+            "industry" : "Business Services",
+            "name" : "1347 Capital Corp.",
+            "z_score" : 0
+          }
+      },
+      { "group" : 2,
+        "name" : { "$_last_5_day" : 0,
+            "Sector" : "Finance",
+            "description" : "1347 Capital Corp. blank check company formed purpose entering merger, share exchange, asset acquisition, stock purchase, recapitalization, reorganization similar business combination businesses entities.",
+            "industry" : "Business Services",
+            "name" : "1347 Capital Corp.",
+            "z_score" : 0
+          }
+      },
+      { "group" : "NA",
+        "name" : { "$_last_5_day" : 0,
+            "Sector" : "n/a",
+            "description" : "na",
+            "industry" : "n/a",
+            "name" : "1347 Capital Corp.",
+            "z_score" : -1
+          }
+      },
+      { "group" : 4,
+        "name" : { "$_last_5_day" : 0,
+            "Sector" : "Finance",
+            "description" : "1347 Capital Corp. blank check company formed purpose entering merger, share exchange, asset acquisition, stock purchase, recapitalization, reorganization similar business combination businesses entities.",
+            "industry" : "Business Services",
+            "name" : "1347 Capital Corp.",
+            "z_score" : -1
+          }
+      },
+      { "group" : 6,
+        "name" : { "$_last_5_day" : 0,
+            "Sector" : "Finance",
+            "description" : "1347 Property Insurance Holdings, Inc. property casualty insurance holding company. The Company offers insurance coverage including homeowners' insurance, manufactured home insurance dwelling insurance.",
+            "industry" : "Property-Casualty Insurers",
+            "name" : "1347 Property Insurance Holdings, Inc.",
+            "z_score" : 0
+          }
+      },
+      { "group" : 6,
+        "name" : { "$_last_5_day" : 0,
+            "Sector" : "Consumer Services",
+            "description" : "1-800-FLOWERS.COM, Inc. e-commerce provider floral products gifts. The Company's product offerings, including fresh-cut seasonal flowers, plants, floral arrangements, home garden merchandise, purchased online calling toll-free telephone number.",
+            "industry" : "Other Specialty Stores",
+            "name" : "1-800 FLOWERS.COM, Inc.",
+            "z_score" : 3
+          }
+      },
+      { "group" : 9,
+        "name" : { "$_last_5_day" : 2,
+            "Sector" : "Finance",
+            "description" : "1st Century Bancshares, Inc. business professional bank serving customers Los Angeles County, California.  The Bank provides range deposit products, loans, services individuals, businesses, prof essionals office located Los Angeles.",
+            "industry" : "Major Banks",
+            "name" : "1st Century Bancshares, Inc",
+            "z_score" : 0
+          }
+      },
+      { "group" : 9,
+        "name" : { "$_last_5_day" : 0,
+            "Sector" : "Finance",
+            "description" : "1st Constitution Bancorp holding company 1st Constitution Bank. The Bank provides wide range business consumer financial services. 1st Constitution offices Cranbury, Montgomery, Hamilton, Plainsboro, New Jersey.",
+            "industry" : "Savings Institutions",
+            "name" : "1st Constitution Bancorp (NJ)",
+            "z_score" : 1
+          }
+      },
+      { "group" : 9,
+        "name" : { "$_last_5_day" : 0,
+            "Sector" : "Finance",
+            "description" : "1st Source Corporation holding company 1st Source Bank. The Bank attracts deposits offers commercial banking, personal banking trust services customers northern Indiana southwestern Michigan. 1st Source's Specialty Finance Group provides leases financing aircraft, automobiles, trucks construction equipment.",
+            "industry" : "Major Banks",
+            "name" : "1st Source Corporation",
+            "z_score" : 0
+          }
+      },
+      { "group" : 13,
+        "name" : { "$_last_5_day" : 1,
+            "Sector" : "Technology",
+            "description" : "21Vianet Group, Inc. provides carrier-neutral Internet data center services. The Company hosts customers' servers networking equipment, provides interconnectivity managed network services enable customers deliver data Internet. 21Vianet conducts business Beijing, China.",
+            "industry" : "Computer Software: Programming, Data Processing",
+            "name" : "21Vianet Group, Inc.",
+            "z_score" : 0
+          }
+      },
+      { "group" : "NA",
+        "name" : { "$_last_5_day" : 0,
+            "Sector" : "Technology",
+            "description" : "na",
+            "industry" : "Computer Software: Prepackaged Software",
+            "name" : "2U, Inc.",
+            "z_score" : 0
+          }
+      },
+      { "group" : "NA",
+        "name" : { "$_last_5_day" : 5,
+            "Sector" : "Finance",
+            "description" : "VelocityShares 3x Inverse Gold ETN exchange-traded note issued USA.  The Note provide investors cash payment scheduled maturity early redemption based performance underlying index, S&P GSCI® Gold Index Excess Return.",
+            "industry" : "Investment Bankers/Brokers/Service",
+            "name" : "3X Inverse Gold ETN Velocityshares",
+            "z_score" : 0
+          }
+      },
+      { "group" : 13,
+        "name" : { "$_last_5_day" : -3,
+            "Sector" : "Technology",
+            "description" : "51job, Inc. provides integrated human resource services China, strong focus recruitment related services.  The Company's recruitment related services delivered print online formats.",
+            "industry" : "Diversified Commercial Services",
+            "name" : "51job, Inc.",
+            "z_score" : 0
+          }
+      },
+      { "group" : "NA",
+        "name" : { "$_last_5_day" : 1,
+            "Sector" : "Consumer Services",
+            "description" : "na",
+            "industry" : "Professional Services",
+            "name" : "6D Global Technologies, Inc.",
+            "z_score" : 1
+          }
+      },
+      { "group" : 19,
+        "name" : { "$_last_5_day" : -3,
+            "Sector" : "Public Utilities",
+            "description" : "8x8, Inc. provides voice-over-Internet protocol creation platforms, hosted Internet PBX solutions, voice video semiconductors, related software. The Company offers service providers tools create next-generation Internet protocol network services, providing telecommunications manufacturers embedded technology, software stacks, reference designs.",
+            "industry" : "Telecommunications Equipment",
+            "name" : "8x8 Inc",
+            "z_score" : 0
+          }
+      },
+      { "group" : "NA",
+        "name" : { "$_last_5_day" : 0,
+            "Sector" : "Capital Goods",
+            "description" : "AV Homes, Inc. engaged homebuilding, land development real estate operations Florida Arizona. The Company's principal operations conducted active adult communities builds homes people ages Central Florida Phoenix.",
+            "industry" : "Homebuilding",
+            "name" : "A V Homes, Inc.",
+            "z_score" : 0
+          }
+      },
+      { "group" : 19,
+        "name" : { "$_last_5_day" : 3,
+            "Sector" : "Basic Industries",
+            "description" : "A. Schulman, Inc. supplies plastic compounds resins used raw materials customers.  The Company combines basic resins purchased basic resin producers enhances additives.  Schulman generally produces compounds meet customer requirements basis customer commitments, buys resells prime off-grade plastic resins.",
+            "industry" : "Major Chemicals",
+            "name" : "A. Schulman, Inc.",
+            "z_score" : 1
+          }
+      },
+      { "group" : 18,
+        "name" : { "$_last_5_day" : 1,
+            "Sector" : "Capital Goods",
+            "description" : "AAON, Inc. designs, manufactures, markets commercial rooftop air-conditioning, heating heat recovery equipment, air-conditioning coils.  The Company's products serve commercial industrial new construction replacement markets.",
+            "industry" : "Industrial Machinery/Components",
+            "name" : "AAON, Inc.",
+            "z_score" : 1
+          }
+      },
+      { "group" : 19,
+        "name" : { "$_last_5_day" : 0,
+            "Sector" : "Capital Goods",
+            "description" : "Abaxis, Inc. develops, manufactures, markets portable blood analysis systems use patient setting.  The Company's systems provide clinicians rapid blood constituent measurements.  Abaxis currently markets VetScan veterinary use Piccolo human medical use.  The Company's products sold United States, Europe Japan.",
+            "industry" : "Industrial Machinery/Components",
+            "name" : "ABAXIS, Inc.",
+            "z_score" : 2
+          }
+      },
+      { "group" : "NA",
+        "name" : { "$_last_5_day" : 1,
+            "Sector" : "Public Utilities",
+            "description" : "Abengoa Yield plc total return company. The Company owns diversified portfolio contracted renewable energy, power generation electric transmission assets North America, South America Europe.",
+            "industry" : "Electric Utilities: Central",
+            "name" : "Abengoa Yield plc",
+            "z_score" : 0
+          }
+      }
+    ]
+}
